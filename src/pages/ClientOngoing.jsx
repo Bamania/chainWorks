@@ -66,6 +66,7 @@ const OngoingForClient = () => {
               <h2 className="text-xl font-semibold mb-2">Proposal ID: {proposal._id}</h2>
               <p><strong>Job ID:</strong> {proposal.jobId}</p>
               <p><strong>Status:</strong> {proposal.status}</p>
+              <p><strong>Status:</strong> {proposal.walletAddress}</p>
               <button
                 onClick={() => navigate("/viewdetails", { state: { proposal } })}
                 className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"

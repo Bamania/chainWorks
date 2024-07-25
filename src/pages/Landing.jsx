@@ -92,7 +92,8 @@ const detectCurrentProvider = () => {
 
   return (
     <>
-    <Navbar account={account} balance={ethBalance} />
+       <Navbar account={account} balance={ethBalance} />
+
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold mb-8">Join as a client or freelancer</h1>
       <div className="flex space-x-8">
@@ -119,11 +120,7 @@ const detectCurrentProvider = () => {
           <span className="font-semibold">I'm a freelancer, looking for work</span>
         </label>
       </div>
-      <button onClick={ConnectWallet}
-        className="mt-8 bg-gray-300 text-gray-600 py-2 px-6 rounded disabled:opacity-50"
-      >
-         Connect Wallet
-      </button>
+     
       <button onClick={loginfunction}
         className="mt-8 bg-gray-300 text-gray-600 py-2 px-6 rounded disabled:opacity-50"
       >

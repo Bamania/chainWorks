@@ -1,20 +1,70 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import Navbar from './Navbar';
+import { useMetaMask } from '../components/MetaMaskProvider';
+import Web3 from "web3"
 const ProposalPage = () => {
     const navigate=useNavigate();
     const location = useLocation();
+    const [isConnected, setIsConnected] = useState(false);
   const { job } = location.state || {}; //state passed while navigating to this page!
-
+  const [ethBalance, setEthBalance] = useState("");
+  const { account, setAccount } = useMetaMask();
   console.log(job);
   const [milestones, setMilestones] = useState([
     { title: '', description: '', startDate: '', endDate: '', income: '', steps: [''] },
   ]);
 
+
   const addMilestone = () => {
     setMilestones([...milestones, { title: '', description: '', startDate: '', endDate: '', income: '', steps: [''] }]);
   };
+//////////////////////////////
 
+const detectCurrentProvider = () => {
+  let provider;
+  //metamask inject this window.ethereum method into the browser environment
+  if (window.ethereum) {     
+    provider = window.ethereum;
+  } else if (window.web3) {
+    provider = window.web3.currentProvider;
+  } else {
+    console.log("Non-ethereum browser detected. You should install Metamask");
+    alert('Please install MetaMask to use this feature');
+  }
+  return provider;
+};
+
+
+const ConnectWallet=async()=>{
+  try {
+      const currentProvider = detectCurrentProvider();
+      if(currentProvider) {
+        await currentProvider.request({method: 'eth_requestAccounts'});
+        const web3 = new Web3(currentProvider);
+        const userAccount  =await web3.eth.getAccounts();
+      //   fetching the current wallet adress information 
+        const account = userAccount[0];
+        console.log("account",account);
+        //fetching the balance of the current wallet
+        // let ethBalance = await web3.eth.getBalance(account);
+        let balanceInWei = await web3.eth.getBalance(account);
+      let balanceInEth = web3.utils.fromWei(balanceInWei, 'ether');
+        setEthBalance(balanceInEth);
+        setAccount(account); 
+        console.log("your balance",ethBalance)
+        console.log("account details",account)
+        setIsConnected(true);
+        console.log("option while logging",selectedOption)
+         
+       
+      }
+    } catch(err) {
+      console.log(err);
+      
+    }
+
+}
   const removeMilestone = (index) => {
     const newMilestones = milestones.filter((_, i) => i !== index);
     setMilestones(newMilestones);
@@ -55,6 +105,7 @@ const ProposalPage = () => {
     console.log("username",username)
 
     const proposalData = {
+
         developerUsername: username|| 'defaultUsername', // Use a default or fetched value
         jobId: job._id,
         milestones: milestones.map(milestone => ({
@@ -67,11 +118,15 @@ const ProposalPage = () => {
             stepTitle: step,
           
           }))
-        }))
+        })),
+        walletAddress:account
       };
       console.log(proposalData)
 
     try {
+      if(!isConnected) {
+        alert("Please connect your wallet before submitting the proposal.");
+      }
       const response = await fetch('http://localhost:5000/api/submit-proposal', {
         method: 'POST',
         headers: {
@@ -93,7 +148,8 @@ const ProposalPage = () => {
       console.error('Error sending proposal:', error);
     }
   };
-  return (
+  return (<>
+    <Navbar account={account} balance={ethBalance} />
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="max-w-4xl mx-auto bg-white shadow-md p-6">
         <h1 className="text-2xl font-bold mb-6">Proposal Page</h1>
@@ -203,7 +259,13 @@ const ProposalPage = () => {
       >
         Send Proposal
       </button>
+      <button onClick={ConnectWallet}
+        className="mt-8 bg-gray-300 text-gray-600 py-2 px-6 rounded disabled:opacity-50"
+      >
+         Connect Wallet
+      </button>
     </div>
+    </>
   );
 };
 

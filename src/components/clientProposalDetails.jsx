@@ -6,7 +6,10 @@ const ProposalDetails = () => {
   const navigate = useNavigate();
   const [proposal, setProposal] = useState(location.state?.proposal);
   const [clientStatuses, setClientStatuses] = useState({});  // For tracking client status changes
+  const [income, setIncome] = useState({});  // For tracking client status changes
+{proposal.milestones.map((milestone)=>{
 
+})}
   useEffect(() => {
     if (location.state?.proposal) {
       // Initialize client statuses from the proposal data
@@ -72,6 +75,8 @@ const ProposalDetails = () => {
         <h2 className="text-xl font-semibold mb-2">Proposal ID: {proposal._id}</h2>
         <p><strong>Job ID:</strong> {proposal.jobId}</p>
         <p><strong>Status:</strong> {proposal.status}</p>
+        <p><strong>Status:</strong> {proposal.walletAddress}</p>
+        <p><strong>income:</strong> {proposal.milestones.income}</p>
 
         <div className="mt-4">
           <h3 className="font-semibold">Milestones:</h3>
@@ -130,7 +135,7 @@ const ProposalDetails = () => {
           Back to Ongoing Proposals
         </button>
         <button
-          onClick={() => navigate("/loginSend")}
+          onClick={() => navigate("/loginSend",{state:{walletAddress:proposal.walletAddress}})}
           className="mt-4 ml-2 bg-green-500 text-white px-4 py-2 rounded "
         >
           Pay!

@@ -61,6 +61,10 @@ const ProposalSchema = new Schema({
     type: String,
     enum: ['incomplete','ongoing', 'completed'],
     default: 'incomplete'
+  }, 
+  walletAddress: { 
+    type: String,
+    required: true
   },
   createdAt: {
     type: Date,

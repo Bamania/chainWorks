@@ -102,7 +102,7 @@ const DeveloperSignup = () => {
           </button>
         </form>
         <div className="text-center mt-6">
-          <p>Already have an account? <a href="/developer-login" className="text-sm text-blue-500 hover:text-blue-700">Sign In</a></p>
+          <p>Already have an account? <a href="/developerlogin" className="text-sm text-blue-500 hover:text-blue-700">Sign In</a></p>
         </div>
       </div>
     </div>

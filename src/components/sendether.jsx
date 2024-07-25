@@ -4,7 +4,10 @@ import { useState, useEffect } from "react";
 import { prepareTransaction, toWei } from "thirdweb";
 import { chain, client } from '../utils/constants';
 
-const SendEther = () => {
+const SendEther = ({walletAddress}) => {
+  console.log("wallet adress passed as props",walletAddress)
+  const wall = walletAddress.toString();
+  console.log(typeof(wall)) 
   const handleTransactionSent = () => {
     console.log('Transaction sent...');
   };
@@ -13,11 +16,11 @@ const SendEther = () => {
     console.log('Transaction confirmed');
     // refetch(); // Refetch the contract data after a successful transaction
   };
-
+//account here 
   const prepareRawTransaction = () => {
     return prepareTransaction({
     // The account that will be the receiver
-    to: "0xB125eC874C8b5e23aE6b589bD02e8ADEd4D5981d",
+    to: wall,
     // The value is the amount of ether you want to send with the transaction
     value: toWei("0.0001"),
     // The chain to execute the transaction on

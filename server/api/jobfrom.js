@@ -190,14 +190,15 @@ router.post('/apply/:jobId', authenticateToken, async (req, res) => {
 //to send the proposal to the database !
 router.post('/submit-proposal',authenticateToken, async (req, res) => {
   try {
-    const { developerUsername, jobId, milestones } = req.body;
+    const { developerUsername, jobId, milestones,walletAddress } = req.body;
     // console.log("proposal data from frontend", proposalData);
 
  
     const proposal = new Proposal({
       developerUsername: developerUsername,
       jobId: jobId,
-      milestones: milestones 
+      milestones: milestones ,
+      walletAddress:walletAddress
     });
     
     await proposal.save();

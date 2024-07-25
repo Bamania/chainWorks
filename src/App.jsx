@@ -29,6 +29,7 @@ import Status from './components/status.jsx';
 import OngoingForClient from './pages/ClientOngoing.jsx';
 import ProposalDetails from './components/clientProposalDetails.jsx';
 import LoginNode from './components/LoginNode.jsx';
+import LoginSend from './components/LoginSend.jsx';
 function App() {
 
  
@@ -65,7 +66,8 @@ function App() {
           {/* <Route path="/statusupdate" element={<Status  />}></Route> //for client */}
           <Route path="/viewdetails" element={<ProposalDetails  />}></Route>
           <Route path="/loginNode" element={<LoginNode  />}></Route>
-          <Route path="/loginSend" element={<LoginNode  />}></Route>
+          <Route path="/loginSend" element={<LoginSend  />}></Route>
+    
 
 
           </Routes>
