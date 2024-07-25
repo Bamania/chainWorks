@@ -40,10 +40,13 @@ const FreelancherJobList = () => {
 
   const handleApply = async (job) => {
     console.log("handleApply mai jo passs hua",job)
+    console.log("handleApply mai jo passs hua",job)
+    
     const token = sessionStorage.getItem('token');
 
     try {
-      const response = await fetch(`http://localhost:5000//api/apply/${job._id}`, { // developer applying for job 1 ! can be distinguished using job Id
+      console.log("handleApply")
+      const response = await fetch(`http://localhost:5000/api/apply/${job._id}`, { // developer applying for job 1 ! can be distinguished using job Id
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

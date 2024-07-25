@@ -10,7 +10,7 @@ import JobList from './pages/JobList.jsx';
 import FreelancherJobList from './pages/FreelancherJobList.jsx';
 import NotificationsPage from './pages/NotificationPage.jsx';
 import Chat from './components/Chat.jsx';
-import ChatWithDeveloperPage from './pages/chat2.jsx';
+// import ChatWithDeveloperPage from './pages/chat2.jsx';
 import DeveloperLogin from './pages/DeveloperLogin.jsx';
 import ClientLogin from './pages/ClientLogin.jsx';
 import DeveloperSignup from './pages/DeveloperSignup .jsx';
@@ -54,7 +54,7 @@ function App() {
           <Route path="/availableJob" element={<FreelancherJobList />}></Route>
           <Route path="/chat" element={<Chat  />}></Route>
           <Route path="/chat/:roomId" element={<Chat />} />
-          <Route path="/chat2" element={<ChatWithDeveloperPage  />}></Route>
+          
           <Route path="/DeveloperLogin" element={<DeveloperLogin  />}></Route>
           <Route path="/createProposal" element={<ProposalPage  />}></Route>
           <Route path="/getProposal" element={<Devsentproposal  />}></Route>

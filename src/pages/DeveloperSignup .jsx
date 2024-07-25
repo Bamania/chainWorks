@@ -1,8 +1,10 @@
 // DeveloperSignup.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const DeveloperSignup = () => {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -29,6 +31,7 @@ const DeveloperSignup = () => {
       const data = await response.json();
       if (response.ok) {
         alert('Developer created successfully');
+        navigate("/DeveloperLogin")
       } else {
         alert(`Error: ${data.error}`);
       }
