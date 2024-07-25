@@ -8,7 +8,7 @@ export const client = createThirdwebClient({
 
 export const chain = defineChain(2442); // polygon cardona zkEVM testnet
 
-export const contractAddress = '0x4e8df2056a33a8dc53da4e9a8a8f36b1dbe2d904'; // MainDemo.sol
+export const contractAddress = '0xf8e81D47203A594245E36C48e151709F0C19fBe8'; // MainDemo.sol
 const contractABI = [
 	{
 		"anonymous": false,
@@ -21,9 +21,9 @@ const contractABI = [
 			},
 			{
 				"indexed": false,
-				"internalType": "bytes32[2]",
-				"name": "ipfsFilePath",
-				"type": "bytes32[2]"
+				"internalType": "bytes32",
+				"name": "ipfsFileHash",
+				"type": "bytes32"
 			},
 			{
 				"indexed": false,
@@ -38,9 +38,9 @@ const contractABI = [
 	{
 		"inputs": [
 			{
-				"internalType": "bytes32[2]",
-				"name": "ipfsFilePath",
-				"type": "bytes32[2]"
+				"internalType": "bytes32",
+				"name": "ipfsFileHash",
+				"type": "bytes32"
 			},
 			{
 				"internalType": "uint32",
@@ -60,9 +60,9 @@ const contractABI = [
 			{
 				"components": [
 					{
-						"internalType": "bytes32[2]",
-						"name": "ipfsFilePath",
-						"type": "bytes32[2]"
+						"internalType": "bytes32",
+						"name": "ipfsFileHash",
+						"type": "bytes32"
 					},
 					{
 						"internalType": "uint32",
@@ -77,30 +77,6 @@ const contractABI = [
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "workNodes",
-		"outputs": [
-			{
-				"internalType": "uint32",
-				"name": "jobId",
-				"type": "uint32"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
 	}
 ];
 
@@ -110,3 +86,4 @@ export const CONTRACT = getContract({
   address: contractAddress,
   abi: contractABI,
 });
+
