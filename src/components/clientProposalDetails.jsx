@@ -46,7 +46,7 @@ const ProposalDetails = () => {
     }));
 
     try {
-      const response = await fetch(`http://localhost:5000/api/update-client-status/${proposal._id}`, {
+      const response = await fetch(`https://chainworks.onrender.com/api/update-client-status/${proposal._id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

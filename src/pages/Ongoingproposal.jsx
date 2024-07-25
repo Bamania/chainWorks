@@ -24,7 +24,7 @@ const OngoingProposals = () => {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/api/get-ongoing-proposals', {
+        const response = await fetch('https://chainworks.onrender.com/api/get-ongoing-proposals', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -77,7 +77,7 @@ const OngoingProposals = () => {
   // }
   //   console.log("create node called")
   //   try {
-  //     const response = await fetch('http://localhost:5000/api/get-ongoing-proposals', {
+  //     const response = await fetch('https://chainworks.onrender.com/api/get-ongoing-proposals', {
   //       method: 'POST',
   //       headers: {
   //         'Authorization': `Bearer ${token}`,
@@ -119,7 +119,7 @@ const OngoingProposals = () => {
     }
   
     try {
-      const response = await fetch('http://localhost:5000/api/get-ongoing-proposals', {
+      const response = await fetch('https://chainworks.onrender.com/api/get-ongoing-proposals', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
