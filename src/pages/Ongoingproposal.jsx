@@ -24,7 +24,8 @@ const OngoingProposals = () => {
       }
 
       try {
-        const response = await fetch('https://chainworks.onrender.com/api/get-ongoing-proposals', {
+      
+        const response = await fetch('http://localhost:5000/api/get-ongoing-proposals', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -46,6 +47,7 @@ const OngoingProposals = () => {
         setError(err.message);
       } finally {
         setLoading(false);
+        alert("update your proposal data or status ! or Create a node of your current proposal data")
       }
     };
 
@@ -77,7 +79,7 @@ const OngoingProposals = () => {
   // }
   //   console.log("create node called")
   //   try {
-  //     const response = await fetch('https://chainworks.onrender.com/api/get-ongoing-proposals', {
+  //     const response = await fetch('http://localhost:5000//api/get-ongoing-proposals', {
   //       method: 'POST',
   //       headers: {
   //         'Authorization': `Bearer ${token}`,
@@ -119,7 +121,7 @@ const OngoingProposals = () => {
     }
   
     try {
-      const response = await fetch('https://chainworks.onrender.com/api/get-ongoing-proposals', {
+      const response = await fetch('http://localhost:5000/api/get-ongoing-proposals', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
