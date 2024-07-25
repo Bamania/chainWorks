@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const ClientSignup = () => {
-  const navigate=useNavigate();
+  const navigate=useNavigate()
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -32,7 +32,7 @@ const ClientSignup = () => {
       const data = await response.json();
       if (response.ok) {
         alert('Client created successfully');
-        navigate("/clientSignup")
+        navigate("/clientLogin")
       } else {
         alert(`Error: ${data.error}`);
       }
