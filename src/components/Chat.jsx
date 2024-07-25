@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
+import { useNavigate } from 'react-router-dom';
 // import './Chat.css'; // Ensure you have Tailwind CSS setup in your project
-
-const socket = io('https://chainworks.onrender.com');
-
+const socket = io('http://localhost:5000/', {
+  transports: ['websocket', 'polling'],
+  upgrade: false, // Sometimes helps with WebSocket connection issues
+});
 const Chat = ({ roomId, username }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-
+  const navigate=useNavigate();
   useEffect(() => {
+    alert("Welcome to the chat! Clients and developers can interact here to discuss projects or negotiate terms Still in progress");
     socket.emit('joinRoom', { roomId });
 
     socket.on('previousMessages', (messages) => {
@@ -31,6 +34,9 @@ const Chat = ({ roomId, username }) => {
       setMessage('');
     }
   };
+  const  handleBack=()=>{
+    navigate(-1)
+  }
 
   const getMessageStyle = (sender) => {
     const colors = ['bg-green-500', 'bg-yellow-500', 'bg-red-500', 'bg-purple-500'];
@@ -63,6 +69,12 @@ const Chat = ({ roomId, username }) => {
           className="ml-3 bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-200"
         >
           Send
+        </button>
+        <button
+          onClick={handleBack}
+          className="ml-3 bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-200"
+        >
+          Back
         </button>
       </div>
     </div>

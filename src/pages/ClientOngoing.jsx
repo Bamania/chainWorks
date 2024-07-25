@@ -12,6 +12,7 @@ const OngoingForClient = () => {
     console.log("handleChatClick")
   }
   useEffect(() => {
+    
     const fetchOngoingProposals = async () => {
       const token = sessionStorage.getItem('token');
 
@@ -22,7 +23,8 @@ const OngoingForClient = () => {
       }
 
       try {
-        const response = await fetch('https://chainworks.onrender.com/api/get-ongoing-proposals-forclient', {
+      
+        const response = await fetch('http://localhost:5000/api/get-ongoing-proposals-forclient', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -73,12 +75,7 @@ const OngoingForClient = () => {
               >
                 View Details
               </button>
-              <button 
-                onClick={() => handleChatClick()}
-                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-              >
-                Chat with Developer
-              </button>
+          
               <ChatButton/>
             </div>
           ))

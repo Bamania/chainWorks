@@ -127,7 +127,7 @@ const ConnectWallet=async()=>{
       if(!isConnected) {
         alert("Please connect your wallet before submitting the proposal.");
       }
-      const response = await fetch('https://chainworks.onrender.com/api/submit-proposal', {
+      const response = await fetch('http://localhost:5000/api/submit-proposal', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -139,6 +139,7 @@ const ConnectWallet=async()=>{
       const result = await response.json();
       if (response.ok) {
           console.log('Proposal sent successfully:', result);
+          alert('Proposal sent successfully:check it out on All PROPOSALS PAGE')
           navigate("/getProposal")
       
       } else {

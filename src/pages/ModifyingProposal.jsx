@@ -9,7 +9,7 @@ const ModifyProposal = () => {
   const [error, setError] = useState(null);
   const [jobnewid, setJobnewid] = useState("");
   const [modifiedMilestones, setModifiedMilestones] = useState([]);
-
+ 
   useEffect(() => {
     const fetchProposalData = async () => {
       const token = sessionStorage.getItem('token');
@@ -29,7 +29,7 @@ const ModifyProposal = () => {
 //to get the proposal
       try {
         const token = sessionStorage.getItem('token');
-        const response = await fetch('https://chainworks.onrender.com/api/get-proposals', {
+        const response = await fetch('http://localhost:5000/api/get-proposals', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -85,7 +85,7 @@ const ModifyProposal = () => {
     
     console.log("Submitting modified milestones:", modifiedMilestones);
     try {
-      const response = await fetch('https://chainworks.onrender.com/api/updateproposal', {
+      const response = await fetch('http://localhost:5000/api/updateproposal', {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -113,7 +113,7 @@ const ModifyProposal = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="max-w-4xl mx-auto bg-white shadow-md p-6">
-        <h1 className="text-2xl font-bold mb-6">Modify Proposals</h1>
+        <h1 className="text-3xl font-bold mb-6"> "Modify or Update status of proposal</h1>
 
         {proposals.length === 0 ? (
           <p>No proposals to modify.</p>
@@ -195,7 +195,7 @@ const ModifyProposal = () => {
                   className="bg-green-500 text-white px-4 py-1 ml-2 hover:bg-green-600"
                  
                 >
-                  Upgrade Chain
+                 Update step status 
                 </button>
       </div>
     </div>

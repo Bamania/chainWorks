@@ -12,6 +12,7 @@ const JobForm = () => {
   const [milestones, setMilestones] = useState([{ description: '', payment: '' }]);
 const navigate = useNavigate();
   const handleSubmit = async (event) => {
+   
     event.preventDefault();
 
     const jobData = {
@@ -26,7 +27,7 @@ const navigate = useNavigate();
     const token = sessionStorage.getItem('token') //getting back the token ! after clicking posting the job
     console.log("Jo login krte waqt saved hua",token);
     try {
-      const response = await fetch('https://chainworks.onrender.com/api/job', {
+      const response = await fetch('http://localhost:5000/api/job', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +39,8 @@ const navigate = useNavigate();
       if (response.ok) {
         const data = await response.json();
         console.log('Job posted successfully:', data);
-        navigate("/allprojects")
+        alert("Job posted successfully")
+        navigate("/clientHome")
         // Optionally reset the form or give user feedback
       } else {
         console.error('Failed to post job');
@@ -88,7 +90,7 @@ const navigate = useNavigate();
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700">Estimation of the Work (Optional)</label>
+        <label className="block text-gray-700">Duration of the Work (Optional)</label>
         <input
           type="text"
           value={estimation}

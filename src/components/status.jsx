@@ -27,7 +27,7 @@ const ModifyProposal = () => {
       }
 
       try {
-        const response = await fetch('https://chainworks.onrender.com/api/get-proposals', {
+        const response = await fetch('http://localhost:5000/api/get-proposals', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -75,11 +75,12 @@ const ModifyProposal = () => {
     navigate("/statusupdate");
   }
   const handleSubmit = async () => {
+
     const token = sessionStorage.getItem('token');
     
     console.log("Submitting modified milestones:", modifiedMilestones);
     try {
-      const response = await fetch('https://chainworks.onrender.com/api/updateproposal', {
+      const response = await fetch('http://localhost:5000/api/updateproposal', {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -94,7 +95,7 @@ const ModifyProposal = () => {
       if (!response.ok) {
         throw new Error('Failed to update proposal');
       }
-
+      alert("status Updated ! Now wait for the Clients approval ")
       navigate('/ongoing-projects'); // Redirect to ongoing proposals page
     } catch (err) {
       setError(err.message);

@@ -52,7 +52,7 @@ function App() {
           <Route path="/notifications" element={<NotificationsPage />} />
           <Route path="/freelancer" element={<JobList />}></Route>
           <Route path="/availableJob" element={<FreelancherJobList />}></Route>
-          {/* <Route path="/chat" element={<Chat  />}></Route> */}
+          <Route path="/chat" element={<Chat  />}></Route>
           <Route path="/chat/:roomId" element={<Chat />} />
           <Route path="/chat2" element={<ChatWithDeveloperPage  />}></Route>
           <Route path="/DeveloperLogin" element={<DeveloperLogin  />}></Route>
